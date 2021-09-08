@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natural Language Processing Tool</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="">Logo</div>
+    </header>
+
+    <main>
+      <section>
+        <form class="" onsubmit="return Client.handleSubmit(event)">
+          <!-- <textarea
+            id="text"
+            name="text"
+            placeholder="Enter your text here" 
+            required
+          ></textarea> -->
+          <input
+          id="url"
+          type="text"
+          name="input"
+          value=""
+          placeholder="Enter URL here"
+        />
+          <input
+            type="submit"
+            name=""
+            value="Analyse"
+            onclick="return Client.handleSubmit(event)"
+            onsubmit="return handleSubmit(event)"
+          />
+        </form>
+      </section>
+
+      <section id="results">
+        <strong>The provided text has the following characteristics:</strong>
+        <div id="results"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p>This is a footer</p>
+    </footer>
+  </body>
+</html>

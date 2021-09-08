@@ -1,0 +1,5 @@
+const showResult = () => {
+  
+}
+
+export {showResult};
