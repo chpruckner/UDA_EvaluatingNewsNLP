@@ -1,16 +1,18 @@
+import { fetch } from "node-fetch";
+
 const path = require("path");
 const express = require("express");
+const cors = require("cors");
 const dotenv = require("dotenv");
-  	dotenv.config();
+//const fetch = require("node-fetch");
 const port = 3000;
-//const textEvaluation = {};
 const app = express();
 
+dotenv.config();
 app.use(express.static("dist"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-
-console.log(__dirname);
+app.use(cors());
 
 // Server setup
 app.listen(port, () => {
@@ -18,28 +20,29 @@ app.listen(port, () => {
 });
 
 // GET Route
-/* app.get("/", (req, res) => {
+app.get("/", (req, res) => {
   res.sendFile("dist/index.html");
   // res.sendFile(path.resolve('src/client/views/index.html'))
 });
 
-app.get("/all", (req, res) => {
-  res.send(textEvaluation);
-}); */
-
 // POST route
-app.post('/add', async (req, res) => {
+app.post("/evaluation", async (req, res) => {
+  console.log("req.body: ", req.body);
   const url = req.body.url;
   const apiKey = process.env.API_KEY;
   const inputLang = "auto"; // detects input language
   const outputLang = "en";
   const verbose = "y";
-  const response = await fetch (`https://api.meaningcloud.com/sentiment-2.1?key=${apiKey}&lang=${inputLang}&ilang=${outputLang}&verbose=${verbose}&url=${url}`);
+  const response = await fetch(
+    `https://api.meaningcloud.com/sentiment-2.1?key=${apiKey}&lang=${inputLang}&ilang=${outputLang}&verbose=${verbose}&url=${url}`,
+    { method: "POST" }
+  );
 
   try {
     const data = await response.json();
+    console.log(data);
     res.send(data);
   } catch (err) {
-      console.error(err);
+    console.error(err);
   }
 });
