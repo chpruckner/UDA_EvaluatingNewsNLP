@@ -1,0 +1,21 @@
+#results {
+  display: none;
+}
+
+#results.show {
+  display: block;
+}
+
+#results h3 {
+  font-size: 25px;
+  margin-bottom: 1.2rem;
+  line-height: 1.2;
+}
+
+.char {
+  display: grid;
+  grid-template-columns: 25% 75%;
+  grid-template-rows: 1fr;
+  column-gap: 1rem;
+  row-gap: 1rem;
+}

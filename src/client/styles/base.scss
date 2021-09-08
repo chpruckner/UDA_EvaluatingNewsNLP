@@ -2,6 +2,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    font-family: "Noto Sans", sans-serif;
 }
 
 main {
@@ -9,6 +10,11 @@ main {
 }
 
 section {
+    width: 90%;
     max-width: 800px;
     margin: 50px auto;
+}
+
+h1, h2, h3 {
+  font-family: "Noto Serif", serif;
 }

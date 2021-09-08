@@ -1,10 +1,10 @@
-import { fetch } from "node-fetch";
+//import { fetch } from "node-fetch";
 
 const path = require("path");
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
-//const fetch = require("node-fetch");
+const fetch = require("node-fetch");
 const port = 3000;
 const app = express();
 
@@ -27,20 +27,19 @@ app.get("/", (req, res) => {
 
 // POST route
 app.post("/evaluation", async (req, res) => {
-  console.log("req.body: ", req.body);
+  console.log("Request received");
   const url = req.body.url;
   const apiKey = process.env.API_KEY;
   const inputLang = "auto"; // detects input language
   const outputLang = "en";
   const verbose = "y";
   const response = await fetch(
-    `https://api.meaningcloud.com/sentiment-2.1?key=${apiKey}&lang=${inputLang}&ilang=${outputLang}&verbose=${verbose}&url=${url}`,
-    { method: "POST" }
+    `https://api.meaningcloud.com/sentiment-2.1?key=${apiKey}&lang=${inputLang}&ilang=${outputLang}&verbose=${verbose}&url=${url}`
   );
 
   try {
     const data = await response.json();
-    console.log(data);
+    console.log("Response send");
     res.send(data);
   } catch (err) {
     console.error(err);
