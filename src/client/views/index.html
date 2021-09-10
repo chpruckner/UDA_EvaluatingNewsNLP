@@ -16,12 +16,6 @@
     <main>
       <section>
         <form class="" onsubmit="return Client.handleSubmit(event)">
-          <!-- <textarea
-            id="text"
-            name="text"
-            placeholder="Enter your text here" 
-            required
-          ></textarea> -->
           <input
           id="url"
           type="text"
@@ -59,5 +53,14 @@
     <footer>
       <p>&copy; Christiane Pruckner</p>
     </footer>
+    <script>
+      // Check that service workers are supported
+      if ('serviceWorker' in navigator) {
+          // Use the window load event to keep the page load performant
+          window.addEventListener('load', () => {
+              navigator.serviceWorker.register('/service-worker.js');
+          });
+      }
+    </script>
   </body>
 </html>

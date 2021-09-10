@@ -1,5 +1,7 @@
 const handleSubmit = (event) => {
   event.preventDefault();
+  //hide result div
+  document.getElementById("results").classList.remove("show");
 
   let userUrl = document.getElementById("url").value;
 
